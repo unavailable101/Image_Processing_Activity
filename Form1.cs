@@ -121,7 +121,7 @@ namespace Image_Processing_Activity
             if (loaded == null) return;
             //BasicDIP.Equalisation(ref loaded, ref processed, trackBar2.Value / 100);
             processed = new Bitmap(loaded);
-            BitmapFilter.Contrast(processed, (SByte)(trackBar2.Value/100));
+            BitmapFilter.Contrast(processed, (SByte)(trackBar2.Value / 100));
             pictureBox2.Image = processed;
         }
 
@@ -445,9 +445,126 @@ namespace Image_Processing_Activity
                 for (int y = 0; y < video.Height; y++)
                 {
                     pixel = video.GetPixel(x, y);
-                    processed.SetPixel( x, video.Height - 1 - y, pixel);
+                    processed.SetPixel(x, video.Height - 1 - y, pixel);
                 }
             }
+            pictureBox2.Image = processed;
+        }
+
+        private void smoothToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.Smooth(processed, 1);
+            pictureBox2.Image = processed;
+        }
+
+        private void trackBar6_Scroll(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.Smooth(processed, trackBar6.Value);
+            pictureBox2.Image = processed;
+        }
+
+        private void gussianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.GaussianBlur(processed, 4);
+            pictureBox2.Image = processed;
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar7_Scroll(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.GaussianBlur(processed, trackBar7.Value);
+            pictureBox2.Image = processed;
+        }
+
+        private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.Sharpen(processed, 11);
+            pictureBox2.Image = processed;
+        }
+
+        private void trackBar8_Scroll(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.Sharpen(processed, trackBar8.Value);
+            pictureBox2.Image = processed;
+        }
+
+        private void meanRemovalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.MeanRemoval(processed, 9);
+            pictureBox2.Image = processed;
+        }
+
+        private void trackBar9_Scroll(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.MeanRemoval(processed, trackBar9.Value);
+            pictureBox2.Image = processed;
+        }
+
+        private void embossLaplascianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossLaplacian(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void horizontalVerticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossHorzVertical(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void allDirectionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossAllDirection(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void lossyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossLossy(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void horizontalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossHorz(processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void verticalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loaded == null) return;
+            processed = new Bitmap(loaded);
+            BitmapFilter.EmbossVert(processed);
             pictureBox2.Image = processed;
         }
     }
