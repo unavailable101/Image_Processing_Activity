@@ -73,14 +73,18 @@ namespace Image_Processing_Activity
         private void greyscaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (loaded == null) return;
-            BasicDIP.Greyscale(ref loaded, ref processed);
+            //BasicDIP.Greyscale(ref loaded, ref processed);
+            processed = new Bitmap(loaded);
+            BitmapFilter.GrayScale(processed);
             pictureBox2.Image = processed;
         }
 
         private void colorInversionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (loaded == null) return;
-            BasicDIP.ColorInvert(ref loaded, ref processed);
+            //BasicDIP.ColorInvert(ref loaded, ref processed);
+            processed = new Bitmap(loaded);
+            BitmapFilter.Invert(processed);
             pictureBox2.Image = processed;
         }
 
@@ -94,7 +98,9 @@ namespace Image_Processing_Activity
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             if (loaded == null) return;
-            BasicDIP.Brightness(ref loaded, ref processed, trackBar1.Value);
+            //BasicDIP.Brightness(ref loaded, ref processed, trackBar1.Value);
+            processed = new Bitmap(loaded);
+            BitmapFilter.Brightness(processed, trackBar1.Value);
             pictureBox2.Image = processed;
         }
 
@@ -113,7 +119,9 @@ namespace Image_Processing_Activity
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
             if (loaded == null) return;
-            BasicDIP.Equalisation(ref loaded, ref processed, trackBar2.Value / 100);
+            //BasicDIP.Equalisation(ref loaded, ref processed, trackBar2.Value / 100);
+            processed = new Bitmap(loaded);
+            BitmapFilter.Contrast(processed, (SByte)(trackBar2.Value/100));
             pictureBox2.Image = processed;
         }
 
